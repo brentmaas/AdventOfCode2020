@@ -1,28 +1,6 @@
 rules = {}
 matches = 0
 
-def check_old(text, rule, start=0):
-    match = False
-    i = []
-    for r in rule:
-        j = start
-        m = True
-        for c in r:
-            if type(c) == int:
-                m, k = check_old(text, rules[c], start=j)
-                if len(k) > 1:
-                    print("oef")
-                j = min(k) if len(k) > 0 else len(text) + 1
-            elif type(c) == str:
-                m = text[j:j+len(c)] == c
-                j += len(c)
-            if not m:
-                break
-        if m:
-            match = True
-            i.append(j)
-    return match, i
-
 def check(text, rule, start=[0]):
     match = []
     i = []
